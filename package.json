@@ -1,6 +1,7 @@
 {
 	"name": "pokemon_open_api_doc",
 	"version": "1.0.0",
+	"type": "module",
 	"scripts": {
 		"dev": "tsx watch src/index.ts",
 		"lint": "biome lint",

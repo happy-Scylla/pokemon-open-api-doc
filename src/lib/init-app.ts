@@ -12,7 +12,20 @@ export type HonoApp = {
 };
 
 export const createRouter = () => {
-	return new OpenAPIHono<HonoApp>({ strict: false });
+	return new OpenAPIHono<HonoApp>({
+		strict: false,
+		defaultHook: (result, c) => {
+			if (!result.success) {
+				return c.json(
+					{
+						ok: false,
+						error: result.error,
+					},
+					422
+				);
+			}
+		},
+	});
 };
 
 export default function initApp() {

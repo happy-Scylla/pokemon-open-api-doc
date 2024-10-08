@@ -14,7 +14,7 @@ export default function configureOpenApi(app: OpenApiHonoApp) {
 	app.get(
 		'/ref',
 		apiReference({
-			theme: 'mars',
+			theme: 'bluePlanet',
 			layout: 'classic',
 			defaultHttpClient: {
 				targetKey: 'javascript',
