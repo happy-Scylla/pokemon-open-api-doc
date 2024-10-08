@@ -1,17 +1,23 @@
 {
-  "name": "pokemon_open_api_doc",
-  "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "lint": "biome lint",
-    "fix": "biome check --write"
-  },
-  "dependencies": {
-    "@hono/node-server": "^1.13.1",
-    "hono": "^4.6.3"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.3",
-    "@types/node": "^20.11.17",
-    "tsx": "^4.7.1"
-  }
+	"name": "pokemon_open_api_doc",
+	"scripts": {
+		"dev": "tsx watch src/index.ts",
+		"lint": "biome lint",
+		"fix": "biome check --write"
+	},
+	"dependencies": {
+		"@hono/node-server": "^1.13.1",
+		"@hono/zod-openapi": "^0.16.4",
+		"dotenv": "^16.4.5",
+		"hono": "^4.6.3",
+		"hono-pino": "^0.3.0",
+		"pino": "^9.4.0",
+		"pino-pretty": "^11.2.2",
+		"zod": "^3.23.8"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.3",
+		"@types/node": "^20.11.17",
+		"tsx": "^4.7.1"
+	}
 }
