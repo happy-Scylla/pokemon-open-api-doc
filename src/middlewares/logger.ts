@@ -3,7 +3,7 @@ import { logger } from 'hono-pino';
 import pino from 'pino';
 import pretty from 'pino-pretty';
 
-export const prettyLogger = () => {
+export default function prettyLogger() {
 	return logger({
 		pino: pino(
 			{
@@ -15,4 +15,4 @@ export const prettyLogger = () => {
 			reqId: () => crypto.randomUUID(),
 		},
 	});
-};
+}

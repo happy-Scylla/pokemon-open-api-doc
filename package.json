@@ -1,5 +1,6 @@
 {
 	"name": "pokemon_open_api_doc",
+	"version": "1.0.0",
 	"scripts": {
 		"dev": "tsx watch src/index.ts",
 		"lint": "biome lint",
@@ -8,6 +9,7 @@
 	"dependencies": {
 		"@hono/node-server": "^1.13.1",
 		"@hono/zod-openapi": "^0.16.4",
+		"@scalar/hono-api-reference": "^0.5.152",
 		"dotenv": "^16.4.5",
 		"hono": "^4.6.3",
 		"hono-pino": "^0.3.0",

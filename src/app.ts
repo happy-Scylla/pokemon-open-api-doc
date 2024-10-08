@@ -1,14 +1,13 @@
-import notFound from '@/middlewares/not-found';
-import onError from '@/middlewares/on-error';
-
-import { OpenAPIHono } from '@hono/zod-openapi';
-import { prettyLogger } from '@/middlewares/logger';
-import type { PinoLogger } from 'hono-pino';
-import serveEmojiFavicon from '@/middlewares/favIcon';
 import initApp from '@/lib/init-app';
+import configureOpenApi from '@/lib/open-api';
+import index from '@/routes/index';
 
 const app = initApp();
+configureOpenApi(app);
 
-app.get('/', (c) => c.text('Hello, World!'));
+const routes = [index];
+for (const route of routes) {
+	app.route('/', route);
+}
 
 export default app;

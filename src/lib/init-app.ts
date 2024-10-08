@@ -1,18 +1,22 @@
 import serveEmojiFavicon from '@/middlewares/favIcon';
-import { prettyLogger } from '@/middlewares/logger';
+import prettyLogger from '@/middlewares/logger';
 import notFound from '@/middlewares/not-found';
 import onError from '@/middlewares/on-error';
 import { OpenAPIHono } from '@hono/zod-openapi';
 import type { PinoLogger } from 'hono-pino';
 
-type HonoApp = {
+export type HonoApp = {
 	Variables: {
 		logger: PinoLogger;
 	};
 };
 
+export const createRouter = () => {
+	return new OpenAPIHono<HonoApp>({ strict: false });
+};
+
 export default function initApp() {
-	const app = new OpenAPIHono<HonoApp>({ strict: false });
+	const app = createRouter();
 
 	app.use(prettyLogger());
 	app.use(serveEmojiFavicon('🦄'));
