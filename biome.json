@@ -12,7 +12,8 @@
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
-		"indentWidth": 4
+		"indentWidth": 4,
+		"lineWidth": 80
 	},
 	"organizeImports": {
 		"enabled": true
@@ -39,7 +40,14 @@
 		"formatter": {
 			"quoteStyle": "single",
 			"semicolons": "always",
-			"trailingCommas": "es5"
+			"trailingCommas": "es5",
+			"arrowParentheses": "always",
+			"bracketSpacing": true
+		}
+	},
+	"json": {
+		"formatter": {
+			"trailingCommas": "none"
 		}
 	}
 }

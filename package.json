@@ -10,8 +10,10 @@
 	"dependencies": {
 		"@hono/node-server": "^1.13.1",
 		"@hono/zod-openapi": "^0.16.4",
+		"@libsql/client": "^0.14.0",
 		"@scalar/hono-api-reference": "^0.5.152",
 		"dotenv": "^16.4.5",
+		"drizzle-orm": "^0.33.0",
 		"hono": "^4.6.3",
 		"hono-pino": "^0.3.0",
 		"pino": "^9.4.0",
@@ -21,6 +23,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "1.9.3",
 		"@types/node": "^20.11.17",
+		"drizzle-kit": "^0.24.2",
 		"tsx": "^4.7.1"
 	}
 }
