@@ -4,7 +4,7 @@ import { createRoute, z } from '@hono/zod-openapi';
 
 const router = createRouter().openapi(
 	createRoute({
-		tags: ['Index'],
+		tags: ['Ping'],
 		method: 'get',
 		path: '/',
 		responses: {
@@ -14,7 +14,7 @@ const router = createRouter().openapi(
 						message: z.string(),
 					})
 					.openapi({
-						example: { message: 'Tasks API' },
+						example: { message: 'Pokemon API' },
 					}),
 				'Index route'
 			),
@@ -23,7 +23,7 @@ const router = createRouter().openapi(
 	(c) => {
 		return c.json(
 			{
-				message: 'Tasks API',
+				message: 'Pokemon API',
 			},
 			200
 		);
