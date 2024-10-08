@@ -1,13 +1,16 @@
 {
   "name": "pokemon_open_api_doc",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "lint": "biome lint",
+    "fix": "biome check --write"
   },
   "dependencies": {
     "@hono/node-server": "^1.13.1",
     "hono": "^4.6.3"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.3",
     "@types/node": "^20.11.17",
     "tsx": "^4.7.1"
   }
