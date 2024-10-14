@@ -1,4 +1,4 @@
-import formatJsonResponse from '@/lib/formatResponse';
+import { formatJsonResponse } from '@/lib/jsonFormat';
 import { createRouter } from '@/lib/init-app';
 import { createRoute, z } from '@hono/zod-openapi';
 
