@@ -1,6 +1,7 @@
 import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
+import { createSelectSchema } from 'drizzle-zod';
 
-export const usersTable = sqliteTable('pokemon', {
+export const pokemon = sqliteTable('pokemon', {
 	id: int('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
 	name: text('name', {}).notNull(),
 	primaryType: text('primary_type', {
@@ -52,3 +53,5 @@ export const usersTable = sqliteTable('pokemon', {
 		.notNull()
 		.default(false),
 });
+
+export const selectPokemonSchema = createSelectSchema(pokemon);

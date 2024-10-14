@@ -1,17 +1,14 @@
+import { selectPokemonSchema } from '@/database/schema';
 import formatJsonResponse from '@/lib/formatResponse';
 import { createRoute, z } from '@hono/zod-openapi';
-
-const tags = ['Pokemon'];
 
 export const getAll = createRoute({
 	path: '/pokemon',
 	method: 'get',
-	tags,
+	tags: ['Pokemon'],
 	responses: {
 		200: formatJsonResponse(
-			z
-				.object({ message: z.string() })
-				.openapi({ example: { message: 'list of all pokemon' } }),
+			z.array(selectPokemonSchema),
 			'list of all pokemon'
 		),
 	},
