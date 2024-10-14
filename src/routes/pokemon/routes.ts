@@ -1,5 +1,5 @@
-import { selectPokemonSchema } from '@/database/schema';
-import formatJsonResponse from '@/lib/formatResponse';
+import { insertPokemonSchema, selectPokemonSchema } from '@/database/schema';
+import { formatJsonRequest, formatJsonResponse } from '@/lib/jsonFormat';
 import { createRoute, z } from '@hono/zod-openapi';
 
 export const getAll = createRoute({
@@ -14,4 +14,22 @@ export const getAll = createRoute({
 	},
 });
 
+export const createPokemon = createRoute({
+	path: '/pokemon/add',
+	method: 'post',
+	tags: ['Pokemon'],
+	request: {
+		body: formatJsonRequest(insertPokemonSchema, 'add pokemon'),
+	},
+	responses: {
+		200: formatJsonResponse(
+			z.object({
+				id: z.number(),
+			}),
+			'pokemon created'
+		),
+	},
+});
+
 export type GetAllRoute = typeof getAll;
+export type CreatePokemonRoute = typeof createPokemon;

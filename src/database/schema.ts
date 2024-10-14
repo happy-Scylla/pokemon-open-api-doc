@@ -1,9 +1,9 @@
 import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
-import { createSelectSchema } from 'drizzle-zod';
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
 
 export const pokemon = sqliteTable('pokemon', {
 	id: int('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
-	name: text('name', {}).notNull(),
+	name: text('name').notNull().unique(),
 	primaryType: text('primary_type', {
 		enum: [
 			'grass',
@@ -55,3 +55,6 @@ export const pokemon = sqliteTable('pokemon', {
 });
 
 export const selectPokemonSchema = createSelectSchema(pokemon);
+export const insertPokemonSchema = createInsertSchema(pokemon)
+	.required({ isLegendary: true })
+	.omit({ id: true });
