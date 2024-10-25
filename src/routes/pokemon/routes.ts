@@ -31,5 +31,6 @@ export const createPokemon = createRoute({
 	},
 });
 
+// tim todo: change name to GetAllPokemonRoute, ...
 export type GetAllRoute = typeof getAll;
 export type CreatePokemonRoute = typeof createPokemon;

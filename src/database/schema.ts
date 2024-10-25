@@ -71,6 +71,8 @@ export const trainer = sqliteTable('trainer', {
 	favouritePokemon: int('favourite_pokemon').references(() => pokemon.id),
 });
 
+export const selectTrainerSchema = createSelectSchema(trainer);
+
 export const trainerRelations = relations(trainer, ({ one }) => ({
 	favouritePokemon: one(pokemon, {
 		fields: [trainer.favouritePokemon],
