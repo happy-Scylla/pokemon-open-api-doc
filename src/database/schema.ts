@@ -72,6 +72,7 @@ export const trainer = sqliteTable('trainer', {
 });
 
 export const selectTrainerSchema = createSelectSchema(trainer);
+export const insertTrainerSchema = createInsertSchema(trainer)
 
 export const trainerRelations = relations(trainer, ({ one }) => ({
 	favouritePokemon: one(pokemon, {

@@ -2,7 +2,7 @@ import { insertPokemonSchema, selectPokemonSchema } from '@/database/schema';
 import { formatJsonRequest, formatJsonResponse } from '@/lib/jsonFormat';
 import { createRoute, z } from '@hono/zod-openapi';
 
-export const getAll = createRoute({
+export const getAllPokemon = createRoute({
 	path: '/pokemon',
 	method: 'get',
 	tags: ['Pokemon'],
@@ -31,6 +31,5 @@ export const createPokemon = createRoute({
 	},
 });
 
-// tim todo: change name to GetAllPokemonRoute, ...
-export type GetAllRoute = typeof getAll;
+export type GetAllPokemonRoute = typeof getAllPokemon;
 export type CreatePokemonRoute = typeof createPokemon;
