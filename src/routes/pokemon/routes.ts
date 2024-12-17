@@ -1,5 +1,7 @@
 import { insertPokemonSchema, selectPokemonSchema } from '@/database/schema';
+import { createErrorSchema } from '@/lib/error';
 import { formatJsonRequest, formatJsonResponse } from '@/lib/jsonFormat';
+import {paramsIdSchema } from '@/lib/validateParams';
 import { createRoute, z } from '@hono/zod-openapi';
 
 export const getAllPokemon = createRoute({
@@ -31,5 +33,25 @@ export const createPokemon = createRoute({
 	},
 });
 
+export const getOnePokemon = createRoute({
+	path: "/tasks/{id}",
+  method: "get",
+  request: {
+    params: paramsIdSchema,
+  },
+  tags: ['Pokemon'],
+  responses: {
+    200: formatJsonResponse(
+		selectPokemonSchema,
+      "The requested task",
+    ),
+    404: formatJsonResponse(
+		createErrorSchema(),
+      "Task not found",
+    )
+  },
+});
+
 export type GetAllPokemonRoute = typeof getAllPokemon;
 export type CreatePokemonRoute = typeof createPokemon;
+export type GetOnePokemonRoute = typeof getOnePokemon;
