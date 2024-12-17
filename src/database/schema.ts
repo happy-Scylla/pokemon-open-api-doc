@@ -1,3 +1,4 @@
+import { relations } from 'drizzle-orm';
 import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
 
@@ -58,3 +59,25 @@ export const selectPokemonSchema = createSelectSchema(pokemon);
 export const insertPokemonSchema = createInsertSchema(pokemon)
 	.required({ isLegendary: true })
 	.omit({ id: true });
+export const updatePokemonSchema = insertPokemonSchema.partial();
+
+export const pokemonRelations = relations(pokemon, ({ many }) => ({
+	trainer: many(trainer),
+}));
+
+export const trainer = sqliteTable('trainer', {
+	id: int('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
+	name: text('name').notNull().unique(),
+	experiencePoints: int('experience_points', { mode: 'number' }).notNull(),
+	favouritePokemon: int('favourite_pokemon').references(() => pokemon.id),
+});
+
+export const selectTrainerSchema = createSelectSchema(trainer);
+export const insertTrainerSchema = createInsertSchema(trainer)
+
+export const trainerRelations = relations(trainer, ({ one }) => ({
+	favouritePokemon: one(pokemon, {
+		fields: [trainer.favouritePokemon],
+		references: [pokemon.id],
+	}),
+}));
