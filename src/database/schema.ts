@@ -59,6 +59,7 @@ export const selectPokemonSchema = createSelectSchema(pokemon);
 export const insertPokemonSchema = createInsertSchema(pokemon)
 	.required({ isLegendary: true })
 	.omit({ id: true });
+export const updatePokemonSchema = insertPokemonSchema.partial();
 
 export const pokemonRelations = relations(pokemon, ({ many }) => ({
 	trainer: many(trainer),
